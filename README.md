@@ -39,7 +39,7 @@ Tree node count: 21523360 (15 levels, 3 children/node)
 |Heap deallocations:|      43046719   |          997
 |   Bytes allocated:|      1205.308MB |     1033.912MB
 
-Region-based memory management can be simulated in C++. One can even use std containers without overhead supplying user-defined allocators. Probably it gets ugly pretty quickly.
+Region-based memory management can be simulated in C++. One can even use std containers without overhead using user-defined allocators. Probably it gets ugly pretty quickly.
 
     {
         Pool pool;
