@@ -29,21 +29,22 @@ This small test app builds, traverses and deallocates a simple tree using two di
 
 Tree node count: 21523360 (15 levels, 3 children/node)
 
-                   |         RAII    |   Region
--------------------|-----------------|-----------------
-        Build time:|  3.169s ( 343%) |  0.923s (100%)
-    Traversal time:|  0.182s ( 116%) |  0.157s (100%)
- Deallocation time:|  3.169s (4972%) |  0.073s (100%)
-        Total time:|  6.972s ( 605%) |  1.153s (100%)
-  Heap allocations:|      43046719   |          997
-Heap deallocations:|      43046719   |          997
-   Bytes allocated:|      1205.308MB |     1033.912MB
+|                   |         RAII    |   Region
+|-------------------|-----------------|-----------------
+|        Build time:|  3.169s ( 343%) |  0.923s (100%)
+|    Traversal time:|  0.182s ( 116%) |  0.157s (100%)
+| Deallocation time:|  3.169s (4972%) |  0.073s (100%)
+|        Total time:|  6.972s ( 605%) |  1.153s (100%)
+|  Heap allocations:|      43046719   |          997
+|Heap deallocations:|      43046719   |          997
+|   Bytes allocated:|      1205.308MB |     1033.912MB
 
 Region-based memory management can be simulated in C++. One can even use std containers without overhead supplying user-defined allocators. Probably it gets ugly pretty quickly.
 
     {
         Pool pool;
         vector<int, Pool> v;
+        ...
     }
     
 More info: https://en.wikipedia.org/wiki/Region-based_memory_management
