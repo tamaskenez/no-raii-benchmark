@@ -25,7 +25,7 @@ struct AllocationStat
 
 AllocationStat g_stat;
 
-inline void* logging_new(size_t size)
+void* operator new(size_t size)
 {
     ++g_stat.n_allocations;
     g_stat.total_bytes_allocated += size;
@@ -33,20 +33,10 @@ inline void* logging_new(size_t size)
     return p;
 }
 
-void* operator new(size_t size)
-{
-    return logging_new(size);
-}
-
-inline void logging_delete(void* p) noexcept
+void operator delete(void* p) noexcept
 {
     ++g_stat.n_frees;
     free(p);
-}
-
-void operator delete(void* p) noexcept
-{
-    logging_delete(p);
 }
 
 namespace with_raii {
